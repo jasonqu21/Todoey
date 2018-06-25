@@ -32,7 +32,6 @@ class CategoryViewController: SwipeTableViewController {
         return categories?.count ?? 1
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
@@ -49,8 +48,6 @@ class CategoryViewController: SwipeTableViewController {
         
         return cell
     }
-    
-    
     
     
     //MARK: - TableView Delegate Methods
@@ -96,6 +93,7 @@ class CategoryViewController: SwipeTableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    
     // MARK: - Data Manipulation Methods
     
     func save(category: Category) {
@@ -111,6 +109,14 @@ class CategoryViewController: SwipeTableViewController {
         
         self.tableView.reloadData()
     }
+    
+    func loadCategories() {
+        
+        categories = realm.objects(Category.self)
+        
+        tableView.reloadData()
+    }
+    
     
     //MARK: - Delete Data From Swipe
     
@@ -128,15 +134,6 @@ class CategoryViewController: SwipeTableViewController {
             }
         }
     }
-    
-    func loadCategories() {
-        
-        categories = realm.objects(Category.self)
-        
-        tableView.reloadData()
-    }
-    
-    
 }
 
 

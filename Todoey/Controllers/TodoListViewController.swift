@@ -114,6 +114,7 @@ class TodoListViewController: SwipeTableViewController {
         
     }
     
+    
     //MARK: - Add New Items
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -152,11 +153,12 @@ class TodoListViewController: SwipeTableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    
     // MARK: - Model Manipulation Methods
     
     func loadItems() {
 
-        todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        todoItems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: true)
 
         tableView.reloadData()
     }
@@ -178,6 +180,7 @@ class TodoListViewController: SwipeTableViewController {
     }
 
 }
+
 
 //MARK: - Search bar methods
 extension TodoListViewController: UISearchBarDelegate {
